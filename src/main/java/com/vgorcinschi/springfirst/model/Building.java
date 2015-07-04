@@ -20,24 +20,26 @@ public class Building {
     private String name;
     private String address;
     private Storey ground, first, second, third, fourth;
+    private String owner;
 
     public Building() {
     }
 
     @Autowired
-    public Building(@Value("Montreal Startup") String name, @Value("200 Rene " +
-"Levesque Ouest,\nMontreal, QC") String address, @Qualifier("ground") Storey ground) {
+    public Building(@Value("${building.name}")String name, @Value("200 Rene " +
+"Levesque Ouest,\nMontreal, QC") String address, 
+            @Qualifier("ground") Storey ground, @Value("${building.owner}")String owner) {
         this.name = name;
         this.address = address;
         this.ground = ground;
+        this.owner = owner;
     }
 
-    public Building(Storey ground, Storey first){
-        this.name = "Montreal Startup";
-        this.address = "200 Rene Levesque Ouest,\n" +
-                "Montreal, QC";
+    public Building(Storey ground, Storey first, String name, String address){
         this.ground = ground;
         this.first = first;
+        this.name = name;
+        this.address = address;
     }
 
     public String getName() {
@@ -86,5 +88,9 @@ public class Building {
 
     public void setFourth(Storey fourth) {
         this.fourth = fourth;
+    }
+
+    public String getOwner() {
+        return owner;
     }
 }

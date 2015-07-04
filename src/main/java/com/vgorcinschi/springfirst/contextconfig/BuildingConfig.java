@@ -5,8 +5,11 @@
  */
 package com.vgorcinschi.springfirst.contextconfig;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.io.ClassPathResource;
 
 /**
  *
@@ -16,5 +19,10 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(basePackages={"com.vgorcinschi.springfirst.model",
     "com.vgorcinschi.springfirst.model.Stories"})
 public class BuildingConfig {
-    
+     @Bean
+    public static PropertySourcesPlaceholderConfigurer placeholderConfigurer(){
+        PropertySourcesPlaceholderConfigurer pspC = new PropertySourcesPlaceholderConfigurer();
+        pspC.setLocation(new ClassPathResource("/com/vgorcinschi/springfirst/app.properties"));
+        return pspC;
+    }
 }

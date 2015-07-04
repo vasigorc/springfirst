@@ -16,6 +16,7 @@ import java.util.List;
  *
  * @author vgorcinschi
  */
+@Qualifier("first")
 public class FirstFloor implements Storey{
     private List<Office> offices;
 

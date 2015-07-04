@@ -24,7 +24,16 @@ public class TwoStoriesTest {
 
     @Autowired
     private Building building;
+    
+    @Autowired
+    @Qualifier("first")
+    private Storey storey;
 
+    @Test
+    public void firstIsThere(){
+        assertNotNull(storey);
+    }
+    
     @Test
     public void checkShape(){
         assertEquals("Circle", building.getGround().getOffices().get(0).getShape());

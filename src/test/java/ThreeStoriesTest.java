@@ -32,10 +32,9 @@ public class ThreeStoriesTest {
     @Qualifier("second")
     private Storey secondOne;
     
-    @Test
-    public void storeyShouldNotBeNull(){
-        assertNotNull(secondOne);
-    }
+    @Autowired
+    @Qualifier("third")
+    private Storey theThird;
     
     @Test
     public void anyConfRooms(){
@@ -55,5 +54,15 @@ public class ThreeStoriesTest {
     @Test
     public void testWiFiIn201(){
         assertTrue(building.getFirst().getOffices().get(1).isWifi());
+    }
+    
+    @Test
+    public void testFourthFloor(){
+        assertNotNull(theThird);
+    }
+    
+    @Test
+    public void verifyAddy(){
+        assertEquals("200 Rene Levesque Ouest, Montreal, QC", building.getAddress());
     }
 }

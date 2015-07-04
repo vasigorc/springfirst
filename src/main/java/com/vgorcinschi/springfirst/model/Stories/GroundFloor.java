@@ -6,19 +6,23 @@
 package com.vgorcinschi.springfirst.model.Stories;
 
 import com.vgorcinschi.springfirst.model.Office;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author vgorcinschi
  */
+
+@Component
+@Qualifier("ground")
 public class GroundFloor implements Storey {
     private List <Office> offices;
 
+    public GroundFloor(){}
+    
     public GroundFloor(List <Office> offices) {
         this.offices = offices;
     }
